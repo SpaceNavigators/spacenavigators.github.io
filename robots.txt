@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: file:///D:\Users\Documents\Publii\sites\space-navigators\preview/sitemap.xml
