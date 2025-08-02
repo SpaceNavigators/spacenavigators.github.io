@@ -3,30 +3,10 @@
     <title>Space Navigators</title>
     <link href="https://spacenavigators.com/feed.xml" rel="self" />
     <link href="https://spacenavigators.com" />
-    <updated>2025-08-02T13:58:57+02:00</updated>
+    <updated>1970-01-01T01:00:00+01:00</updated>
     <author>
         <name>Yajur Kumar</name>
     </author>
     <id>https://spacenavigators.com</id>
 
-    <entry>
-        <title>Testing a Post</title>
-        <author>
-            <name>Yajur Kumar</name>
-        </author>
-        <link href="https://spacenavigators.com/testing-a-post.html"/>
-        <id>https://spacenavigators.com/testing-a-post.html</id>
-
-        <updated>2025-08-02T13:58:57+02:00</updated>
-            <summary>
-                <![CDATA[
-                    I am just testing my first post.
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>I am just testing my first post.</p>
-            ]]>
-        </content>
-    </entry>
 </feed>

@@ -10,19 +10,5 @@
         "name": "Yajur Kumar"
     },
     "items": [
-        {
-            "id": "https://spacenavigators.com/testing-a-post.html",
-            "url": "https://spacenavigators.com/testing-a-post.html",
-            "title": "Testing a Post",
-            "summary": "I am just testing my first post.",
-            "content_html": "<p>I am just testing my first post.</p>",
-            "author": {
-                "name": "Yajur Kumar"
-            },
-            "tags": [
-            ],
-            "date_published": "2025-08-02T13:58:57+02:00",
-            "date_modified": "2025-08-02T13:58:57+02:00"
-        }
     ]
 }
