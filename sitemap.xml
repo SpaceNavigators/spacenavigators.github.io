@@ -5,8 +5,24 @@
 <loc>https://spacenavigators.com/</loc>
 </url>
 <url>
+<loc>https://spacenavigators.com/about-me.html</loc>
+<lastmod>2025-08-02T14:57:15+02:00</lastmod>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/3/me.avif</image:loc>
+<image:title><![CDATA[Yajur Kumar]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://spacenavigators.com/articles.html</loc>
 <lastmod>2025-08-02T14:27:24+02:00</lastmod>
+</url>
+<url>
+<loc>https://spacenavigators.com/blogs-and-more.html</loc>
+<lastmod>2025-08-02T14:44:24+02:00</lastmod>
+</url>
+<url>
+<loc>https://spacenavigators.com/resume.html</loc>
+<lastmod>2025-08-02T14:44:46+02:00</lastmod>
 </url>
 <url>
 <loc>https://spacenavigators.com/testing-a-post.html</loc>
