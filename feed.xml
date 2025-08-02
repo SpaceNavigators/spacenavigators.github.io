@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
     <title>Space Navigators</title>
-    <link href="https://spacenavigators.github.io/feed.xml" rel="self" />
-    <link href="https://spacenavigators.github.io" />
+    <link href="https://spacenavigators.com/feed.xml" rel="self" />
+    <link href="https://spacenavigators.com" />
     <updated>2025-08-02T13:58:57+02:00</updated>
     <author>
         <name>Yajur Kumar</name>
     </author>
-    <id>https://spacenavigators.github.io</id>
+    <id>https://spacenavigators.com</id>
 
     <entry>
         <title>Testing a Post</title>
         <author>
             <name>Yajur Kumar</name>
         </author>
-        <link href="https://spacenavigators.github.io/testing-a-post.html"/>
-        <id>https://spacenavigators.github.io/testing-a-post.html</id>
+        <link href="https://spacenavigators.com/testing-a-post.html"/>
+        <id>https://spacenavigators.com/testing-a-post.html</id>
 
         <updated>2025-08-02T13:58:57+02:00</updated>
             <summary>

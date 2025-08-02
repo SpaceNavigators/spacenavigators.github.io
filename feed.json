@@ -2,16 +2,16 @@
     "version": "https://jsonfeed.org/version/1",
     "title": "Space Navigators",
     "description": "",
-    "home_page_url": "https://spacenavigators.github.io",
-    "feed_url": "https://spacenavigators.github.io/feed.json",
+    "home_page_url": "https://spacenavigators.com",
+    "feed_url": "https://spacenavigators.com/feed.json",
     "user_comment": "",
     "author": {
         "name": "Yajur Kumar"
     },
     "items": [
         {
-            "id": "https://spacenavigators.github.io/testing-a-post.html",
-            "url": "https://spacenavigators.github.io/testing-a-post.html",
+            "id": "https://spacenavigators.com/testing-a-post.html",
+            "url": "https://spacenavigators.com/testing-a-post.html",
             "title": "Testing a Post",
             "summary": "I am just testing my first post.",
             "content_html": "<p>I am just testing my first post.</p>",
