@@ -1,41 +1,61 @@
+---
+layout: default
+title: Home
+---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Navigators</title>
-    <link rel="stylesheet" href="styles.css">
-    
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\(', '\)']],
-      displayMath: [['$$', '$$'], ['\[', '\]']],
-      processEscapes: true
-    },
-    svg: {
-      fontCache: 'global'
-    }
-  };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% if page.url == "/" %}
 
-</head>
-<body>
-    <header>
-        <h1>Space Navigators</h1>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-    </nav>
-    <main>
-        <h2>All Articles</h2>
-        
-    </main>
-    <footer>
-        <p>&copy; 2025 Space Navigators. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+<!-- Featured
+================================================== -->
+<section class="featured-posts">
+    <div class="section-title">
+        <h2><span>Featured</span></h2>
+    </div>
+    <div class="row">
+
+    {% for post in site.posts %}
+
+        {% if post.featured == true %}
+
+            {% include featuredbox.html %}
+
+        {% endif %}
+
+    {% endfor %}
+
+    </div>
+</section>
+
+{% endif %}
+
+<!-- Posts Index
+================================================== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        <h2><span>All Stories</span></h2>
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% for post in paginator.posts %}
+
+        {% include postbox.html %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- Pagination
+================================================== -->
+<div class="bottompagination">
+<div class="pointerup"><i class="fa fa-caret-up"></i></div>
+<span class="navigation" role="navigation">
+    {% include pagination.html %}
+</span>
+</div>
+
