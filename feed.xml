@@ -3,10 +3,51 @@
     <title>Space Navigators</title>
     <link href="https://spacenavigators.com/feed.xml" rel="self" />
     <link href="https://spacenavigators.com" />
-    <updated>1970-01-01T01:00:00+01:00</updated>
+    <updated>2025-08-02T15:10:04+02:00</updated>
     <author>
         <name>Yajur Kumar</name>
     </author>
     <id>https://spacenavigators.com</id>
 
+    <entry>
+        <title>Test 2</title>
+        <author>
+            <name>Yajur Kumar</name>
+        </author>
+        <link href="https://spacenavigators.com/test-2/"/>
+        <id>https://spacenavigators.com/test-2/</id>
+
+        <updated>2025-08-02T15:10:04+02:00</updated>
+            <summary>
+                <![CDATA[
+                    The quadratic formula is: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>The quadratic formula is:
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Test</title>
+        <author>
+            <name>Yajur Kumar</name>
+        </author>
+        <link href="https://spacenavigators.com/test/"/>
+        <id>https://spacenavigators.com/test/</id>
+
+        <updated>2025-08-02T15:07:35+02:00</updated>
+            <summary>
+                <![CDATA[
+                    The quadratic formula is: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>The quadratic formula is:<br>$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</p>
+            ]]>
+        </content>
+    </entry>
 </feed>
