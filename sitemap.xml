@@ -32,7 +32,31 @@
 </url>
 <url>
 <loc>https://spacenavigators.com/polynomial-guidance-in-spacecraft-navigation-an-in-depth-perspective-introduction/</loc>
-<lastmod>2025-09-07T13:13:48+02:00</lastmod>
+<lastmod>2025-09-07T13:50:37+02:00</lastmod>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/13/lunar_lander_poly.jpeg</image:loc>
+<image:title><![CDATA[Polynomial Guidance]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/13/example1.png</image:loc>
+<image:title><![CDATA[Simplified 1D Orbital Approach]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/13/example2.png</image:loc>
+<image:title><![CDATA[C-W Approximation for Along-Track Separation]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/13/example3.png</image:loc>
+<image:title><![CDATA[Lunar Powered Descent Trajectory]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/13/example4.png</image:loc>
+<image:title><![CDATA[Orbital Formation Flying (5th-Degree)]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/13/example5-2.png</image:loc>
+<image:title><![CDATA[Attitude Trajectory Planning]]></image:title>
+</image:image>
 </url>
 <url>
 <loc>https://spacenavigators.com/resume/</loc>
