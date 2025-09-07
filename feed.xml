@@ -3,7 +3,7 @@
     <title>Space Navigators</title>
     <link href="https://spacenavigators.com/feed.xml" rel="self" />
     <link href="https://spacenavigators.com" />
-    <updated>2025-09-07T12:34:23+02:00</updated>
+    <updated>2025-09-07T12:44:21+02:00</updated>
     <author>
         <name>Yajur Kumar</name>
     </author>
@@ -20,18 +20,13 @@
         <updated>2025-09-07T10:09:31+02:00</updated>
             <summary>
                 <![CDATA[
-                    Polynomial Guidance in Spacecraft Navigation: An In-Depth Perspective with Numerical Examples and Plots Introduction Polynomial guidance is a cornerstone technique in guidance, navigation, and control (GNC) engineering, particularly for spacecraft applications in space technology. It involves representing a spacecraft’s trajectory—whether positional or angular—as a polynomial&hellip;
+                    Introduction Polynomial guidance is a common guidance technique, particularly for spacecraft applications in space technology. It involves representing a spacecraft’s trajectory—whether positional or angular—as a polynomial function of time, enabling smooth, predictable paths optimized for mission objectives like fuel efficiency, time minimization, or safety constraints&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                <h1 id="polynomial-guidance-in-spacecraft-navigation-an-in-depth-perspective-with-numerical-examples-and-plots">Polynomial Guidance in Spacecraft Navigation: An In-Depth Perspective with Numerical Examples and Plots</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Polynomial guidance is a cornerstone technique in guidance, navigation, and control (GNC) engineering, particularly for spacecraft applications in space technology. It involves representing a spacecraft’s trajectory—whether positional or angular—as a polynomial function of time, enabling smooth, predictable paths optimized for mission objectives like fuel efficiency, time minimization, or safety constraints (e.g., avoiding debris or ensuring soft landings). Polynomials are favored because they are mathematically simple, infinitely differentiable (yielding closed-form expressions for velocity, acceleration, and higher derivatives), and can exactly satisfy a finite number of boundary conditions with sufficient degree. This makes them ideal for resource-constrained spacecraft systems requiring low computational overhead.</p><p>In spacecraft navigation, polynomial guidance is used for tasks like orbital rendezvous, planetary landing, formation flying, and attitude control. For instance, during orbital rendezvous, polynomials approximate relative motion dynamics described by the Clohessy-Wiltshire (C-W) equations, ensuring precise alignment with minimal thrust. This article provides a comprehensive exploration of polynomial guidance, including detailed derivations, spacecraft-specific applications, five end-to-end numerical examples with full equations, and Python code to generate plots for position, velocity, acceleration, and control inputs, saved as images for inclusion in this markdown.</p><blockquote>
-<p><strong>Note for Publii Users</strong>: To render the equations below, ensure your Publii theme supports MathJax. Add the following to your theme’s <code>&lt;head&gt;</code> section (e.g., via Publii’s “Code Injection” or custom HTML):</p><pre><code class="language-html">&lt;script id=&quot;MathJax-script&quot; async src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<p>Configure MathJax to recognize <code>$...$</code> for inline and <code>$$...$$</code> for display equations. To include plots, save the generated PNG files in <code>input/media/plots/</code> and reference them as shown below.</p></blockquote>
-<h2 id="core-concept-of-polynomial-guidance">Core Concept of Polynomial Guidance</h2>
+                <h2 id="introduction">Introduction</h2>
+<p>Polynomial guidance is a common guidance technique, particularly for spacecraft applications in space technology. It involves representing a spacecraft’s trajectory—whether positional or angular—as a polynomial function of time, enabling smooth, predictable paths optimized for mission objectives like fuel efficiency, time minimization, or safety constraints (e.g., avoiding debris or ensuring soft landings). Polynomials are favored because they are mathematically simple, infinitely differentiable (yielding closed-form expressions for velocity, acceleration, and higher derivatives), and can exactly satisfy a finite number of boundary conditions with sufficient degree. This makes them ideal for resource-constrained spacecraft systems requiring low computational overhead.</p><p>In spacecraft navigation, polynomial guidance is used for tasks like orbital rendezvous, planetary landing, formation flying, and attitude control. For instance, during orbital rendezvous, polynomials approximate relative motion dynamics described by the Clohessy-Wiltshire (C-W) equations, ensuring precise alignment with minimal thrust. This article provides a comprehensive exploration of polynomial guidance, including detailed derivations, spacecraft-specific applications, five end-to-end numerical examples with full equations, and Python code to generate plots for position, velocity, acceleration, and control inputs, saved as images for inclusion in this markdown.</p><h2 id="so-how-exactly-polynomial-guidance-works">So How Exactly Polynomial Guidance Works?</h2>
 <p>Polynomial guidance models a spacecraft’s state (position or angle) as a polynomial of degree $n$:</p><p>$$
 f(t) = \sum_{k=0}^{n} a_k t^k = a_n t^n + a_{n-1} t^{n-1} + \cdots + a_1 t + a_0
 $$</p><p>The degree $n$ is chosen based on the number of constraints: for $m$ boundary conditions (e.g., initial and final positions, velocities, accelerations), $n \geq m-1$. Coefficients $a_k$ are determined to satisfy these constraints and optimize a cost function, such as minimizing fuel via the integral of acceleration squared:</p><p>$$
@@ -74,8 +69,8 @@ f’(t) = 5a t^4 + 4b t^3 + 3c t^2 + 2d t + e
 $$</p><p>$$
 f’’(t) = 20a t^3 + 12b t^2 + 6c t + 2d
 $$</p><p>Boundary conditions (position, velocity, acceleration at $t=0$ and $t=T$) yield a 6x6 system, solved via matrix methods in the numerical examples below.</p><h2 id="implementation-and-optimization">Implementation and Optimization</h2>
-<p>Coefficients are computed to satisfy boundary conditions and optimize objectives (e.g., minimizing $J$). Optimization algorithms like quadratic programming or gradient descent are used, often in real-time for adaptive guidance. In spacecraft, the polynomial is fed into the GNC system, computing desired states ($f(t)$, $f’(t)$) at each timestep, with feedback controllers (e.g., PID) adjusting thrusters or reaction wheels based on sensor data. For multi-dimensional cases, separate polynomials per axis are used, coupled if dynamics (e.g., C-W equations) require.</p><h2 id="numerical-examples-with-plots">Numerical Examples with Plots</h2>
-<p>Below are five end-to-end numerical examples, each with full equations, computed coefficients, tables, and plots generated by Python code. The plots are saved as PNG files for inclusion in this markdown.</p><h3 id="example-1-simplified-1d-orbital-approach">Example 1: Simplified 1D Orbital Approach</h3>
+<p>Coefficients are computed to satisfy boundary conditions and optimize objectives (e.g., minimizing $J$). Optimization algorithms like quadratic programming or gradient descent are used, often in real-time for adaptive guidance. In spacecraft, the polynomial is fed into the GNC system, computing desired states ($f(t)$, $f’(t)$) at each timestep, with feedback controllers (e.g., PID) adjusting thrusters or reaction wheels based on sensor data. For multi-dimensional cases, separate polynomials per axis are used, coupled if dynamics (e.g., C-W equations) require.</p><h2 id="some-cool-examples">Some Cool Examples</h2>
+<p>Below are five examples with computed coefficients, tables, and plots.</p><h3 id="scenario-1-simplified-1d-orbital-approach">Scenario 1: Simplified 1D Orbital Approach</h3>
 <p><strong>Scenario</strong>: A spacecraft in low Earth orbit (LEO) drifts 10 km radially, needing to close to 0 km over 200 s with initial velocity -50 m/s and final velocity 0 m/s for a soft approach.</p><p><strong>Boundary Conditions</strong>:</p><ul>
 <li>$p_0 = 10000$ m, $v_0 = -50$ m/s</li>
 <li>$p_T = 0$ m, $v_T = 0$ m/s</li>
@@ -139,7 +134,7 @@ $$</p><p><strong>Table</strong>:</p><table>
 <td>1.00</td>
 </tr>
 </tbody></table>
-<p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example1.png" alt="Simplified 1D Orbital Approach" data-is-external-image="true"></figure><h3 id="example-2-c-w-polynomial-approximation-along-track">Example 2: C-W Polynomial Approximation (Along-Track)</h3>
+<p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example1.png" alt="Simplified 1D Orbital Approach" data-is-external-image="true"></figure><h3 id="scenario-2-c-w-polynomial-approximation-along-track">Scenario 2: C-W Polynomial Approximation (Along-Track)</h3>
 <p><strong>Scenario</strong>: A chaser spacecraft in LEO ($n \approx 0.001$ rad/s) has an initial along-track separation of -1000 m, aiming to rendezvous at origin over 600 s with zero velocities.</p><p><strong>Boundary Conditions</strong>:</p><ul>
 <li>$y_0 = -1000$ m, $v_{y0} = 0$ m/s</li>
 <li>$y_T = 0$ m, $v_{yT} = 0$ m/s</li>
@@ -203,7 +198,7 @@ $$</p><p><strong>Table</strong>:</p><table>
 <td>-0.016667</td>
 </tr>
 </tbody></table>
-<p><strong>Control Input</strong>: The acceleration $\ddot{y}(t)$ approximates $u_y$ in $\ddot{y} + 2n \dot{x} = u_y$, valid for short maneuvers.</p><p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example2.png" alt="C-W Approximation for Along-Track Separation" data-is-external-image="true"></figure><h3 id="example-3-lunar-powered-descent">Example 3: Lunar Powered Descent</h3>
+<p><strong>Control Input</strong>: The acceleration $\ddot{y}(t)$ approximates $u_y$ in $\ddot{y} + 2n \dot{x} = u_y$, valid for short maneuvers.</p><p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example2.png" alt="C-W Approximation for Along-Track Separation" data-is-external-image="true"></figure><h3 id="scenario-3-lunar-powered-descent">Scenario 3: Lunar Powered Descent</h3>
 <p><strong>Scenario</strong>: A lunar lander descends vertically from 10 km altitude with -50 m/s velocity to 0 m altitude with zero velocity over 200 s. Lunar gravity is $g = -1.62$ m/s² (upward positive).</p><p><strong>Coefficients</strong>: Same as Example 1.</p><p><strong>Thrust Calculation</strong>: Thrust per mass is $f’’(t) - g$:</p><p>$$
 \text{Thrust/m} = (0.0075 t - 0.5) - (-1.62) = 0.0075 t + 1.12
 $$</p><p><strong>Table</strong>:</p><table>
@@ -259,7 +254,7 @@ $$</p><p><strong>Table</strong>:</p><table>
 <td>2.62</td>
 </tr>
 </tbody></table>
-<p><strong>Delta-V</strong>: $\int_0^T |\text{Thrust/m}| , dt \approx 374$ m/s (computed in code).</p><p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example3.png" alt="Lunar Powered Descent Trajectory" data-is-external-image="true"></figure><h3 id="example-4-orbital-formation-flying-with-5th-degree-polynomial">Example 4: Orbital Formation Flying with 5th-Degree Polynomial</h3>
+<p><strong>Delta-V</strong>: $\int_0^T |\text{Thrust/m}| , dt \approx 374$ m/s (computed in code).</p><p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example3.png" alt="Lunar Powered Descent Trajectory" data-is-external-image="true"></figure><h3 id="scenario-4-orbital-formation-flying-with-5th-degree-polynomial">Scenario 4: Orbital Formation Flying with 5th-Degree Polynomial</h3>
 <p><strong>Scenario</strong>: A satellite in a formation (e.g., MMS mission) adjusts its radial position from 500 m to 0 m over 1000 s, with zero initial and final velocities and accelerations to minimize thruster transients.</p><p><strong>Boundary Conditions</strong>:</p><ul>
 <li>$x_0 = 500$ m, $v_{x0} = 0$ m/s, $a_{x0} = 0$ m/s²</li>
 <li>$x_T = 0$ m, $v_{xT} = 0$ m/s, $a_{xT} = 0$ m/s²</li>
@@ -330,7 +325,7 @@ $$</p><p><strong>Table</strong>:</p><table>
 <td>0.0</td>
 </tr>
 </tbody></table>
-<p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example4.png" alt="Orbital Formation Flying (5th-Degree)" data-is-external-image="true"></figure><h3 id="example-5-attitude-trajectory-planning">Example 5: Attitude Trajectory Planning</h3>
+<p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example4.png" alt="Orbital Formation Flying (5th-Degree)" data-is-external-image="true"></figure><h3 id="scenario-5-attitude-trajectory-planning">Scenario 5: Attitude Trajectory Planning</h3>
 <p><strong>Scenario</strong>: A spacecraft slews its pitch angle from 0° to 30° over 300 s, starting and ending at rest.</p><p><strong>Boundary Conditions</strong>:</p><ul>
 <li>$\theta_0 = 0$ rad, $\dot{\theta}_0 = 0$ rad/s</li>
 <li>$\theta_T = \pi/6$ rad (~30°), $\dot{\theta}_T = 0$ rad/s</li>
@@ -390,154 +385,14 @@ $$</p><p><strong>Table</strong>:</p><table>
 <td>-0.000035</td>
 </tr>
 </tbody></table>
-<p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example5.png" alt="Attitude Trajectory Planning" data-is-external-image="true"></figure><h2 id="python-code-for-generating-plots">Python Code for Generating Plots</h2>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-import os
-
-# Create a directory for saving plots
-output_dir = &#39;plots&#39;
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
-
-# Function to compute 3rd-degree polynomial coefficients
-def compute_cubic_coeffs(p0, v0, pT, vT, T):
-    a = (2 * (p0 - pT) + T * (v0 + vT)) / T**3
-    b = (3 * (pT - p0) - T * (2 * v0 + vT)) / T**2
-    c = v0
-    d = p0
-    return a, b, c, d
-
-# Function to compute 5th-degree polynomial coefficients
-def compute_quintic_coeffs(p0, v0, a0, pT, vT, aT, T):
-    A = np.array([
-        [0, 0, 0, 0, 0, 1],
-        [0, 0, 0, 0, 1, 0],
-        [0, 0, 0, 2, 0, 0],
-        [T**5, T**4, T**3, T**2, T, 1],
-        [5*T**4, 4*T**3, 3*T**2, 2*T, 1, 0],
-        [20*T**3, 12*T**2, 6*T, 2, 0, 0]
-    ])
-    b = np.array([p0, v0, a0, pT, vT, aT])
-    coeffs = np.linalg.solve(A, b)
-    return coeffs  # [a, b, c, d, e, f]
-
-# Function to evaluate polynomial and derivatives
-def evaluate_traj(t, coeffs, degree=3):
-    if degree == 3:
-        a, b, c, d = coeffs
-        pos = a * t**3 + b * t**2 + c * t + d
-        vel = 3 * a * t**2 + 2 * b * t + c
-        acc = 6 * a * t + 2 * b
-    else:  # degree 5
-        a, b, c, d, e, f = coeffs
-        pos = a * t**5 + b * t**4 + c * t**3 + d * t**2 + e * t + f
-        vel = 5 * a * t**4 + 4 * b * t**3 + 3 * c * t**2 + 2 * d * t + e
-        acc = 20 * a * t**3 + 12 * b * t**2 + 6 * c * t + 2 * d
-    return pos, vel, acc
-
-# Plotting function with save option
-def plot_trajectory(t, pos, vel, acc, title, ylabel_pos, ylabel_vel, ylabel_acc, filename, control=None, ylabel_control=None):
-    fig, axs = plt.subplots(3 + (1 if control is not None else 0), 1, figsize=(8, 10 + (2 if control is not None else 0)))
-    axs[0].plot(t, pos, label=&#39;Position&#39;, color=&#39;#1f77b4&#39;)  # Blue
-    axs[0].set_title(title)
-    axs[0].set_ylabel(ylabel_pos)
-    axs[0].grid(True)
-    axs[0].legend()
-
-    axs[1].plot(t, vel, label=&#39;Velocity&#39;, color=&#39;#ff7f0e&#39;)  # Orange
-    axs[1].set_ylabel(ylabel_vel)
-    axs[1].grid(True)
-    axs[1].legend()
-
-    axs[2].plot(t, acc, label=&#39;Acceleration&#39;, color=&#39;#2ca02c&#39;)  # Green
-    axs[2].set_ylabel(ylabel_acc)
-    axs[2].set_xlabel(&#39;Time (s)&#39;)
-    axs[2].grid(True)
-    axs[2].legend()
-
-    if control is not None:
-        axs[3].plot(t, control, label=&#39;Control Input&#39;, color=&#39;#d62728&#39;)  # Red
-        axs[3].set_ylabel(ylabel_control)
-        axs[3].set_xlabel(&#39;Time (s)&#39;)
-        axs[3].grid(True)
-        axs[3].legend()
-
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, filename), dpi=300, bbox_inches=&#39;tight&#39;)
-    plt.show()
-    plt.close()
-
-# Example 1: Simplified 1D Orbital Approach
-p0_1 = 10000  # m
-v0_1 = -50    # m/s
-pT_1 = 0      # m
-vT_1 = 0      # m/s
-T_1 = 200     # s
-
-coeffs1 = compute_cubic_coeffs(p0_1, v0_1, pT_1, vT_1, T_1)
-t1 = np.linspace(0, T_1, 100)
-pos1, vel1, acc1 = evaluate_traj(t1, coeffs1, degree=3)
-plot_trajectory(t1, pos1, vel1, acc1, &#39;Simplified 1D Orbital Approach&#39;, &#39;Position (m)&#39;, &#39;Velocity (m/s)&#39;, &#39;Acceleration (m/s²)&#39;, &#39;example1.png&#39;)
-
-# Example 2: C-W Polynomial Approximation (Along-Track)
-p0_2 = -1000  # m (y0)
-v0_2 = 0      # m/s
-pT_2 = 0      # m
-vT_2 = 0      # m/s
-T_2 = 600     # s
-
-coeffs2 = compute_cubic_coeffs(p0_2, v0_2, pT_2, vT_2, T_2)
-t2 = np.linspace(0, T_2, 100)
-pos2, vel2, acc2 = evaluate_traj(t2, coeffs2, degree=3)
-plot_trajectory(t2, pos2, vel2, acc2, &#39;C-W Approximation for Along-Track Separation&#39;, &#39;Relative Position y (m)&#39;, &#39;Velocity vy (m/s)&#39;, &#39;Acceleration ay (m/s²)&#39;, &#39;example2.png&#39;)
-
-# Example 3: Lunar Powered Descent
-g_moon = -1.62  # m/s²
-coeffs3 = coeffs1  # Same as Example 1
-thrust_m = acc1 - g_moon
-t3 = t1
-pos3, vel3, acc3 = pos1, vel1, acc1
-plot_trajectory(t3, pos3, vel3, acc3, &#39;Lunar Powered Descent Trajectory&#39;, &#39;Altitude (m)&#39;, &#39;Velocity (m/s)&#39;, &#39;Acceleration (m/s²)&#39;, &#39;example3.png&#39;, thrust_m, &#39;Thrust per Mass (m/s²)&#39;)
-
-# Compute Delta-V
-delta_v = np.trapezoid(np.abs(thrust_m), t3)
-print(f&quot;Example 3 - Approximate Delta-V: {delta_v:.2f} m/s&quot;)
-
-# Example 4: Orbital Formation Flying (5th-Degree)
-p0_4 = 500    # m
-v0_4 = 0      # m/s
-a0_4 = 0      # m/s²
-pT_4 = 0      # m
-vT_4 = 0      # m/s
-aT_4 = 0      # m/s²
-T_4 = 1000    # s
-
-coeffs4 = compute_quintic_coeffs(p0_4, v0_4, a0_4, pT_4, vT_4, aT_4, T_4)
-t4 = np.linspace(0, T_4, 100)
-pos4, vel4, acc4 = evaluate_traj(t4, coeffs4, degree=5)
-plot_trajectory(t4, pos4, vel4, acc4, &#39;Orbital Formation Flying (5th-Degree)&#39;, &#39;Relative Position x (m)&#39;, &#39;Velocity vx (m/s)&#39;, &#39;Acceleration ax (m/s²)&#39;, &#39;example4.png&#39;)
-
-# Example 5: Attitude Trajectory Planning
-p0_5 = 0           # rad
-v0_5 = 0           # rad/s
-pT_5 = np.pi / 6   # rad (~30°)
-vT_5 = 0           # rad/s
-T_5 = 300          # s
-
-coeffs5 = compute_cubic_coeffs(p0_5, v0_5, pT_5, vT_5, T_5)
-t5 = np.linspace(0, T_5, 100)
-pos5, vel5, acc5 = evaluate_traj(t5, coeffs5, degree=3)
-plot_trajectory(t5, pos5, vel5, acc5, &#39;Attitude Trajectory Planning&#39;, &#39;Angle (rad)&#39;, &#39;Angular Velocity (rad/s)&#39;, &#39;Angular Acceleration (rad/s²)&#39;, &#39;example5.png&#39;)
-</code></pre>
-<h2 id="application-to-spacecraft-clohessy-wiltshire-equations">Application to Spacecraft: Clohessy-Wiltshire Equations</h2>
+<p><strong>Plot</strong>:</p><figure class="post__image"><img loading="lazy" src="/media/plots/example5.png" alt="Attitude Trajectory Planning" data-is-external-image="true"></figure><h2 id="spacecraft-rendezvous-clohessy-wiltshire-equations">Spacecraft Rendezvous: Clohessy-Wiltshire Equations</h2>
 <p>For near-circular orbits, C-W equations model relative motion:</p><p>$$
 \ddot{x} - 3n^2 x - 2n \dot{y} = u_x
 $$</p><p>$$
 \ddot{y} + 2n \dot{x} = u_y
 $$</p><p>$$
 \ddot{z} + n^2 z = u_z
-$$</p><p>Where $n = \sqrt{\mu / r^3}$ is mean motion, $\mu$ is the gravitational parameter, and $u$ represents thrust accelerations. Polynomials approximate solutions when thrusts are small. For unforced motion ($u=0$), exact solutions are trigonometric, but for guidance, polynomial forms for $x(t)$, $y(t)$, $z(t)$ are used, with required $u$ computed as $f’’(t) - \text{dynamics terms}$. The approximation holds for short maneuvers due to linear second derivatives [1].</p><h2 id="realistic-spacecraft-applications">Realistic Spacecraft Applications</h2>
+$$</p><p>Where $n = \sqrt{\mu / r^3}$ is mean motion, $\mu$ is the gravitational parameter, and $u$ represents thrust accelerations. Polynomials approximate solutions when thrusts are small. For unforced motion ($u=0$), exact solutions are trigonometric, but for guidance, polynomial forms for $x(t)$, $y(t)$, $z(t)$ are used, with required $u$ computed as $f’’(t) - \text{dynamics terms}$. The approximation holds for short maneuvers due to linear second derivatives [1].</p><h2 id="common-applications">Common Applications</h2>
 <ul>
 <li><p><strong>Orbital Rendezvous and Docking</strong>: Polynomials plan trajectories for chaser spacecraft, using conic optimization for fuel efficiency [2] or real-time proximity operations for docking with tumbling targets [3]. The MMS mission uses polynomial-based formation guidance [4].</p></li>
 <li><p><strong>Powered Descent for Planetary Landing</strong>: Fractional polynomials optimize lunar or Martian landings [5][6], as seen in Hayabusa2’s asteroid touchdown [8].</p></li>
@@ -545,9 +400,7 @@ $$</p><p>Where $n = \sqrt{\mu / r^3}$ is mean motion, $\mu$ is the gravitational
 <li><p><strong>Attitude Trajectory Planning</strong>: Polynomials ensure smooth slews for imaging or communication [11][12].</p></li>
 <li><p><strong>Relative Navigation and Orbit Determination</strong>: Polynomial dynamics aid angles-only navigation [13][14] and orbit determination for maneuvering spacecraft [15].</p></li>
 </ul>
-<h2 id="limitations-and-advanced-topics">Limitations and Advanced Topics</h2>
-<p>Polynomials struggle with long-duration or highly nonlinear dynamics. Advances include fractional polynomials [6], convex optimization hybrids [16], and machine learning for coefficient tuning [17].</p><h2 id="conclusion">Conclusion</h2>
-<p>Polynomial guidance provides a robust framework for spacecraft navigation, as demonstrated through detailed derivations, numerical examples, and visualizations saved as images. By integrating these plots into the markdown, readers can visualize the trajectories, enhancing understanding of GNC systems for future missions.</p><h2 id="original-citation">Original Citation</h2>
+<p>Important point to note here is that polynomials struggle with long-duration or highly nonlinear dynamics. Advances include fractional polynomials [6], convex optimization hybrids [16], and machine learning for coefficient tuning [17].</p><h2 id="original-citation">Original Citation</h2>
 <p>Y. Kumar, “Polynomial Guidance in Spacecraft: A Simplified Perspective,” <em>Space Navigators</em>, May 13, 2023. [Online]. Available: <a href="https://www.spacenavigators.com/post/polynomial-guidance-in-spacecraft-navigation-a-simplified-perspective">https://www.spacenavigators.com/post/polynomial-guidance-in-spacecraft-navigation-a-simplified-perspective</a></p><h2 id="references">References</h2>
 <ol>
 <li>W. H. Clohessy and R. S. Wiltshire, “Terminal Guidance System for Satellite Rendezvous,” <em>Journal of Aerospace Sciences</em>, vol. 27, no. 9, pp. 653–658, 1960.</li>
