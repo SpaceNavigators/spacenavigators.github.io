@@ -5,6 +5,14 @@
 <loc>https://spacenavigators.com/</loc>
 </url>
 <url>
+<loc>https://spacenavigators.com/a-simple-guide-to-design-robust-attitude-and-orbit-controller-for-satellites/</loc>
+<lastmod>2025-11-30T13:47:22+01:00</lastmod>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/16/HInResults.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://spacenavigators.com/about-me/</loc>
 <lastmod>2025-09-07T14:11:07+02:00</lastmod>
 <image:image>
@@ -33,6 +41,10 @@
 <url>
 <loc>https://spacenavigators.com/comprehensive-modeling-of-high-fidelity-6-dof-dynamics-for-cubesat-simulation/</loc>
 <lastmod>2025-08-03T15:13:00+02:00</lastmod>
+</url>
+<url>
+<loc>https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/</loc>
+<lastmod>2025-09-07T18:15:16+02:00</lastmod>
 </url>
 <url>
 <loc>https://spacenavigators.com/polynomial-guidance-in-spacecraft-navigation-an-in-depth-perspective-introduction/</loc>
@@ -72,5 +84,9 @@
 </url>
 <url>
 <loc>https://spacenavigators.com/tags/</loc>
+</url>
+<url>
+<loc>https://spacenavigators.com/the-three-body-problem/</loc>
+<lastmod>2025-09-12T18:09:22+02:00</lastmod>
 </url>
 </urlset>

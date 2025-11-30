@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Genetic Algorithms for Optimal System Design - Space Navigators</title><meta name="description" content="The inspiration for Genetic Algorithms (GAs) comes directly from nature, specifically from the process of evolution and natural selection. In this article, we discuss how this natural process works in detail and how it inspired the creation of an algorithm for problem-solving and optimization. In&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/"><link rel="alternate" type="application/atom+xml" href="https://spacenavigators.com/feed.xml" title="Space Navigators - RSS"><link rel="alternate" type="application/json" href="https://spacenavigators.com/feed.json" title="Space Navigators - JSON"><meta property="og:title" content="Genetic Algorithms for Optimal System Design"><meta property="og:image" content="https://spacenavigators.com/media/website/globeandaroundmini.PNG"><meta property="og:image:width" content="601"><meta property="og:image:height" content="167"><meta property="og:site_name" content="Space Navigators"><meta property="og:description" content="The inspiration for Genetic Algorithms (GAs) comes directly from nature, specifically from the process of evolution and natural selection. In this article, we discuss how this natural process works in detail and how it inspired the creation of an algorithm for problem-solving and optimization. In&hellip;"><meta property="og:url" content="https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://spacenavigators.com/media/website/favicon_min.png" type="image/png"><link rel="stylesheet" href="https://spacenavigators.com/assets/css/style.css?v=68ebef1b1675aa1aa577c9edb366f816"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/"},"headline":"Genetic Algorithms for Optimal System Design","datePublished":"2025-09-07T18:15+02:00","dateModified":"2025-09-07T18:15+02:00","image":{"@type":"ImageObject","url":"https://spacenavigators.com/media/website/globeandaroundmini.PNG","height":167,"width":601},"description":"The inspiration for Genetic Algorithms (GAs) comes directly from nature, specifically from the process of evolution and natural selection. In this article, we discuss how this natural process works in detail and how it inspired the creation of an algorithm for problem-solving and optimization. In&hellip;","author":{"@type":"Person","name":"Yajur Kumar","url":"https://spacenavigators.com/authors/yajur-kumar/"},"publisher":{"@type":"Organization","name":"Yajur Kumar","logo":{"@type":"ImageObject","url":"https://spacenavigators.com/media/website/globeandaroundmini.PNG","height":167,"width":601}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>MathJax = {
+    tex: {
+      inlineMath: [['$$', '$$'], ['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+    }
+  };</script></head><body class="post-template"><script>MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script><header class="top js-header"><a class="logo" href="https://spacenavigators.com/"><img src="https://spacenavigators.com/media/website/globeandaroundmini.PNG" alt="Space Navigators" width="601" height="167"></a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://spacenavigators.com/articles/" title="Download Articles" target="_self">Download Articles</a></li><li><a href="https://spacenavigators.com/blogs-and-more/" target="_self">Blogs &amp; More</a></li><li><a href="https://spacenavigators.com/about-me/" target="_self">About Me</a></li><li><a href="https://spacenavigators.com/resume/" target="_blank">Resume</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="wrapper search__overlay-inner"></div></div><button class="search__btn btn--icon js-search-btn" aria-label="Search"><svg height="18" width="18" role="presentation" focusable="false"><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#search"/></svg></button></div></header><main class="post"><article class="content"><div class="hero hero--noimage"><header class="hero__content"><div class="wrapper"><h1>Genetic Algorithms for Optimal System Design</h1><div class="feed__meta content__meta"><a href="https://spacenavigators.com/authors/yajur-kumar/" class="feed__author">Yajur Kumar</a> <time datetime="2025-09-07T18:15" class="feed__date">September 7, 2025</time></div></div></header></div><div class="entry-wrapper content__entry"><p>The inspiration for Genetic Algorithms (GAs) comes directly from nature, specifically from the process of evolution and natural selection. In this article, we discuss how this natural process works in detail and how it inspired the creation of an algorithm for problem-solving and optimization.</p><h2 id="natural-evolution-survival-of-the-fittest">Natural Evolution: Survival of the Fittest</h2><p>In nature, evolution is the gradual process through which species change over time to adapt to their environment. The main idea behind evolution is natural selection, often called “survival of the fittest.”</p><p>Here’s how it works:</p><ul><li><strong>Genetic Material (DNA):</strong> Every living organism has genes, which carry the information that defines its traits—like height, color, or behavior. These genes are stored in a long sequence of DNA.</li><li><strong>Population:</strong> A group of individuals of the same species living together. Each individual has a unique set of genes.</li><li><strong>Fitness:</strong> Not all individuals are equally fit to survive in their environment. Some have traits that help them thrive (like better camouflage or stronger muscles), while others may have traits that make life harder.</li><li><strong>Reproduction:</strong> Individuals that are better suited to their environment (more “fit”) are more likely to survive and reproduce. Their offspring inherit the genes that made their parents successful.</li><li><strong>Mutation and Variation:</strong> Occasionally, random mutations occur in the genes of individuals. These small, random changes introduce new traits. Most mutations might not be useful, but some can provide advantages, helping future generations survive even better.</li></ul><h3 id="example-of-evolution-in-nature">Example of Evolution in Nature</h3><p>Let’s take an example of birds living on an island where food is scarce, and only birds with sharp, strong beaks can break open the tough seeds available:</p><ul><li>Over time, birds with stronger beaks will survive better because they can eat more food.</li><li>These strong-beaked birds will reproduce more often, passing on the “strong beak” trait to their offspring.</li><li>Birds with weaker beaks will struggle to survive and may not reproduce as much.</li><li>Over many generations, more birds in the population will have strong beaks, and the weak-beaked birds will eventually disappear.</li><li>If a random mutation makes some birds’ beaks even stronger or sharper, that trait could spread if it offers an advantage.</li></ul><p>Through this process of selection, reproduction, and mutation, species evolve and adapt to their environments over time.</p><h2 id="how-this-inspired-genetic-algorithms">How This Inspired Genetic Algorithms</h2><p>The process of evolution in nature inspired scientists to create a problem-solving algorithm that mimics how species evolve to find the “best” solution over time. Here’s how the inspiration from nature was used:</p><ul><li><strong>Genes and Chromosomes → Variables and Solutions:</strong> In a Genetic Algorithm, just like in nature, we represent each possible solution to a problem as a chromosome. This chromosome is made up of genes, each representing different variables or characteristics of the solution.</li><li><strong>Fitness in Nature → Fitness Function in Algorithms:</strong> In nature, fitness is the ability to survive and reproduce. In a Genetic Algorithm, <em>fitness</em> is a measure of how good a solution is at solving the problem.</li><li><strong>Selection in Nature → Selection in Algorithms:</strong> In evolution, only the fittest individuals survive and reproduce. In Genetic Algorithms, the fittest solutions (those with the best fitness scores) are selected to create new solutions.</li><li><strong>Crossover in Nature → Crossover in Algorithms:</strong> In biology, reproduction combines the genes from two parents to create offspring with a mix of both parents’ traits. In Genetic Algorithms, <em>crossover</em> mimics this by combining two solutions to create a new one.</li><li><strong>Mutation in Nature → Mutation in Algorithms:</strong> Just as random mutations in nature can introduce new traits, <em>mutation</em> in a Genetic Algorithm introduces small random changes to a solution. This ensures that new possibilities are explored, even if the current best solutions aren’t perfect.</li></ul><p>The key advantage of using evolution as inspiration is that Genetic Algorithms don’t need to know the exact path to the best solution. They explore many possibilities and use random variation, just like evolution, to stumble upon better solutions. Over time, by applying selection and combination, these algorithms can find highly effective solutions to very complex problems.</p><h3 id="example-maximizing-a-non-linear-function">Example: Maximizing a Non-Linear Function</h3><p>Let’s say we want to maximize the function:</p><p>[ f(x) = x \sin(10\pi x) + 2 ]</p><p>where ( x ) is between 0 and 1. This is a non-linear function with multiple peaks and valleys, making it a good example for a Genetic Algorithm. The MATLAB code below demonstrates this optimization.</p><pre><code class="language-matlab">% Compare Genetic Algorithm solution with standard mathematical optimization
+% for maximizing f(x) = x * sin(10 * pi * x) + 2, x in [0, 1]
+
+% Step 1: Genetic Algorithm solution
+% Genetic Algorithm parameters
+populationSize = 20;  % Number of individuals in the population
+numGenerations = 50;  % Number of generations to evolve
+mutationRate = 0.05;  % Probability of mutation (5%)
+crossoverRate = 0.8;  % Probability of crossover (80%)
+numGenes = 16;        % Number of genes (bits) to represent x
+
+% Create an initial random population
+population = randi([0 1], populationSize, numGenes);
+
+% Genetic Algorithm loop for several generations
+for generation = 1:numGenerations
+    % Evaluate the fitness of each individual in the population
+    fitness = zeros(populationSize, 1);
+    for i = 1:populationSize
+        x = decodeChromosome(population(i, :), numGenes);
+        fitness(i) = fitnessFunction(x);
+    end
+    
+    % Select individuals for reproduction based on fitness
+    selectedPopulation = selectRoulette(population, fitness);
+    
+    % Apply crossover to generate a new population
+    newPopulation = applyCrossover(selectedPopulation, crossoverRate);
+    
+    % Apply mutation to introduce random changes
+    mutatedPopulation = applyMutation(newPopulation, mutationRate);
+    
+    % Update the population for the next generation
+    population = mutatedPopulation;
+end
+
+% Final solution from Genetic Algorithm
+[bestFitness_GA, bestIndex] = max(fitness);
+bestX_GA = decodeChromosome(population(bestIndex, :), numGenes);
+fprintf(&#39;Genetic Algorithm: Best x = %.5f, Best fitness = %.5f\n&#39;, bestX_GA, bestFitness_GA);
+
+% Step 2: Standard Mathematical Optimization using fminbnd
+% fminbnd minimizes a function, so we minimize -f(x) to maximize f(x)
+objectiveFunction = @(x) -(x * sin(10 * pi * x) + 2);  % Negative of the function to maximize
+[x_fminbnd, neg_fminbnd] = fminbnd(objectiveFunction, 0, 1);
+
+% Convert the negative fitness value back to positive
+bestFitness_fminbnd = -neg_fminbnd;
+
+fprintf(&#39;Standard Optimization (fminbnd): Best x = %.5f, Best fitness = %.5f\n&#39;, x_fminbnd, bestFitness_fminbnd);
+
+%% Function to evaluate the fitness of a chromosome
+function fit = fitnessFunction(x)
+    % The function we want to maximize: f(x) = x * sin(10 * pi * x) + 2
+    fit = x * sin(10 * pi * x) + 2;
+end
+
+%% Function to decode the chromosome (binary string) into a real value of x
+function x = decodeChromosome(chromosome, numGenes)
+    % Convert binary chromosome to decimal, then scale to the range [0, 1]
+    decimalValue = bin2dec(num2str(chromosome));
+    x = decimalValue / (2^numGenes - 1);  % Scale to [0, 1]
+end
+
+%% Function for roulette wheel selection based on fitness
+function selectedPop = selectRoulette(population, fitness)
+    % Normalize fitness values to create a probability distribution
+    totalFitness = sum(fitness);
+    prob = fitness / totalFitness;
+    
+    % Cumulative probability distribution for selection
+    cumulativeProb = cumsum(prob);
+    
+    % Select individuals based on roulette wheel approach
+    populationSize = size(population, 1);
+    numGenes = size(population, 2);
+    selectedPop = zeros(populationSize, numGenes);
+    for i = 1:populationSize
+        r = rand();  % Random number between 0 and 1
+        selectedIndex = find(cumulativeProb &gt;= r, 1);  % Select individual
+        selectedPop(i, :) = population(selectedIndex, :);
+    end
+end
+
+%% Function to apply crossover between pairs of individuals
+function newPop = applyCrossover(population, crossoverRate)
+    populationSize = size(population, 1);
+    numGenes = size(population, 2);
+    newPop = population;
+    
+    for i = 1:2:populationSize
+        if rand() &lt; crossoverRate
+            % Select two parents
+            parent1 = population(i, :);
+            parent2 = population(i+1, :);
+            
+            % Apply crossover (single-point crossover)
+            crossoverPoint = randi([1, numGenes-1]);
+            newPop(i, :) = [parent1(1:crossoverPoint), parent2(crossoverPoint+1:end)];
+            newPop(i+1, :) = [parent2(1:crossoverPoint), parent1(crossoverPoint+1:end)];
+        end
+    end
+end
+
+%% Function to apply mutation to the population
+function mutatedPop = applyMutation(population, mutationRate)
+    populationSize = size(population, 1);
+    numGenes = size(population, 2);
+    mutatedPop = population;
+    
+    for i = 1:populationSize
+        for j = 1:numGenes
+            if rand() &lt; mutationRate
+                mutatedPop(i, j) = ~population(i, j);  % Flip the gene
+            end
+        end
+    end
+end
+</code></pre><p>Upon evaluating this code in MATLAB, we get the following output:</p><pre><code>Genetic Algorithm: Best x = 0.59976, Best fitness = 2.84666
+Standard Optimization (fminbnd): Best x = 0.65156, Best fitness = 2.65078
+</code></pre><h3 id="example-satellite-trajectory-optimization">Example: Satellite Trajectory Optimization</h3><p>Let’s consider an example related to satellite systems. To compare a Genetic Algorithm (GA) with a standard optimization technique for trajectory optimization of a satellite in orbit, we address the following problem:</p><h4 id="problem-description">Problem Description</h4><p>The goal is to transfer a satellite from one circular orbit (initial orbit) to another circular orbit (target orbit). The satellite can change its velocity at specific times (impulse burns), and we want to optimize the thrust directions to minimize the total fuel used.</p><p><strong>Objective:</strong> Minimize fuel usage (which is proportional to the velocity changes (\Delta V)).</p><p><strong>Standard Method for Comparison:</strong> We can use the <em>Hohmann transfer</em> method, which is an analytically optimal way of transferring a satellite between two circular orbits using two impulsive burns.</p><h4 id="steps">Steps</h4><ul><li>Use a Genetic Algorithm to find the optimal thrust direction and times to minimize (\Delta V).</li><li>Compare it with the fuel cost of a Hohmann transfer (a standard two-burn maneuver).</li></ul><h4 id="problem-setup">Problem Setup</h4><ul><li>The satellite is initially in a circular orbit with radius ( r_1 ).</li><li>The target orbit is circular with radius ( r_2 ).</li><li>The satellite can apply a finite number of thrust impulses at any point during the transfer.</li><li>The cost function is the total (\Delta V) (change in velocity).</li></ul><h4 id="matlab-code">MATLAB Code</h4><pre><code class="language-matlab">% Constants
+mu = 398600;  % Gravitational parameter of Earth [km^3/s^2]
+r1 = 7000;    % Initial orbit radius [km]
+r2 = 10000;   % Target orbit radius [km]
+
+% Genetic Algorithm parameters
+populationSize = 50;  % Number of individuals in the population
+numGenerations = 100; % Number of generations
+numSteps = 2;         % Number of impulsive burns (same as Hohmann transfer)
+mutationRate = 0.05;  % Mutation probability
+crossoverRate = 0.8;  % Crossover probability
+
+% Initial random population (representing thrust directions)
+population = rand(populationSize, numSteps * 2);  % Thrust angles and magnitudes
+
+% Preallocate fitness array for storing results
+fitness = zeros(populationSize, 1);
+
+% GA loop for multiple generations
+for generation = 1:numGenerations
+    % Evaluate fitness (fuel consumption) of each individual
+    for i = 1:populationSize
+        thrustSequence = population(i, :);
+        fitness(i) = evaluateThrustSequence(thrustSequence, r1, r2, mu);
+    end
+    
+    % Select individuals based on fitness (lower deltaV is better)
+    selectedPopulation = selectRoulette(population, fitness);
+    
+    % Apply crossover to generate new population
+    newPopulation = applyCrossover(selectedPopulation, crossoverRate);
+    
+    % Apply mutation to introduce diversity
+    mutatedPopulation = applyMutation(newPopulation, mutationRate);
+    
+    % Update the population
+    population = mutatedPopulation;
+    
+    % Display best fitness of the generation
+    [bestFitness, bestIndex] = min(fitness);  % We minimize fuel consumption
+    fprintf(&#39;Generation %d: Best deltaV = %.5f km/s\n&#39;, generation, bestFitness);
+end
+
+% Final GA solution
+[bestFitness, bestIndex] = min(fitness);
+bestThrustSequence = population(bestIndex, :);
+fprintf(&#39;Optimal deltaV found by GA: %.5f km/s\n&#39;, bestFitness);
+
+% Hohmann transfer calculations
+% Burn 1: At perigee (first circular orbit)
+v1 = sqrt(mu / r1);  % Velocity in initial orbit
+a_transfer = (r1 + r2) / 2;  % Semi-major axis of the transfer orbit
+v_transfer_perigee = sqrt(2 * mu * (1/r1 - 1/(2 * a_transfer)));  % Velocity at perigee of transfer orbit
+
+% Burn 2: At apogee (target circular orbit)
+v_transfer_apogee = sqrt(2 * mu * (1/r2 - 1/(2 * a_transfer)));  % Velocity at apogee of transfer orbit
+v2 = sqrt(mu / r2);  % Velocity in target orbit
+
+% Delta V for Hohmann transfer
+deltaV_hohmann = abs(v_transfer_perigee - v1) + abs(v2 - v_transfer_apogee);
+fprintf(&#39;DeltaV for Hohmann transfer: %.5f km/s\n&#39;, deltaV_hohmann);
+
+%% Function to evaluate fuel usage for a given thrust sequence
+function deltaV = evaluateThrustSequence(thrustSequence, r1, r2, mu)
+    % Simplified evaluation of fuel consumption for impulsive burns
+    % thrustSequence: contains magnitudes and angles of thrust
+    
+    % Step 1: Calculate initial velocity in the initial orbit
+    v1 = sqrt(mu / r1);  % Circular orbit velocity at r1
+    
+    % Step 2: Compute the semi-major axis of the transfer orbit
+    a_transfer = (r1 + r2) / 2;  % Semi-major axis of the transfer orbit
+    
+    % Step 3: Compute velocity at perigee (initial point) and apogee
+    v_transfer_perigee = sqrt(2 * mu * (1/r1 - 1/(2 * a_transfer)));  % Perigee velocity
+    v_transfer_apogee = sqrt(2 * mu * (1/r2 - 1/(2 * a_transfer)));    % Apogee velocity
+    
+    % Step 4: Calculate deltaV for each thrust impulse
+    deltaV1 = abs(v_transfer_perigee - v1);   % First burn at perigee (r1)
+    deltaV2 = abs(v_transfer_apogee - sqrt(mu / r2));  % Second burn at apogee (r2)
+    
+    % Total deltaV (fuel consumption)
+    deltaV = deltaV1 + deltaV2;
+end
+
+%% Function for roulette wheel selection based on fitness
+function selectedPop = selectRoulette(population, fitness)
+    totalFitness = sum(fitness);
+    prob = fitness / totalFitness;
+    cumulativeProb = cumsum(prob);
+    populationSize = size(population, 1);
+    numGenes = size(population, 2);
+    selectedPop = zeros(populationSize, numGenes);
+    
+    for i = 1:populationSize
+        r = rand();
+        selectedIndex = find(cumulativeProb &gt;= r, 1);
+        selectedPop(i, :) = population(selectedIndex, :);
+    end
+end
+
+%% Function to apply crossover
+function newPop = applyCrossover(population, crossoverRate)
+    populationSize = size(population, 1);
+    numGenes = size(population, 2);
+    newPop = population;
+    
+    for i = 1:2:populationSize
+        if rand() &lt; crossoverRate
+            parent1 = population(i, :);
+            parent2 = population(i+1, :);
+            crossoverPoint = randi([1, numGenes-1]);
+            newPop(i, :) = [parent1(1:crossoverPoint), parent2(crossoverPoint+1:end)];
+            newPop(i+1, :) = [parent2(1:crossoverPoint), parent1(crossoverPoint+1:end)];
+        end
+    end
+end
+
+%% Function to apply mutation
+function mutatedPop = applyMutation(population, mutationRate)
+    populationSize = size(population, 1);
+    numGenes = size(population, 2);
+    mutatedPop = population;
+    
+    for i = 1:populationSize
+        for j = 1:numGenes
+            if rand() &lt; mutationRate
+                mutatedPop(i, j) = rand();  % Random mutation
+            end
+        end
+    end
+end
+</code></pre><p>Both methods yield a (\Delta V) value of 1.22288 km/s. This is a simplified illustrative example, and Genetic Algorithms are particularly useful for more complex optimization scenarios.</p><h2 id="conclusion">Conclusion</h2><p>If you have any questions related to this topic, feel free to connect with me and message me at <a href="https://www.linkedin.com/in/yajur">https://www.linkedin.com/in/yajur</a>.</p><p>Keep Exploring!</p></div><footer class="content__footer"><div class="entry-wrapper"><p class="content__updated">This article was updated on September 7, 2025</p><div class="content__actions"><div class="content__share"><button class="btn--icon content__share-button js-content__share-button"><svg width="20" height="20" aria-hidden="true"><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#share"></use></svg> <span>Share It</span></button><div class="content__share-popup js-content__share-popup"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fspacenavigators.com%2Fgenetic-algorithms-for-optimal-system-design%2F" class="js-share facebook" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fspacenavigators.com%2Fgenetic-algorithms-for-optimal-system-design%2F&amp;via=%40YajurKumar&amp;text=Genetic%20Algorithms%20for%20Optimal%20System%20Design" class="js-share twitter" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#twitter"/></svg> <span>Twitter</span> </a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fspacenavigators.com%2Fgenetic-algorithms-for-optimal-system-design%2F" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span></a></div></div></div><div class="content__bio bio"><div><h3 class="h4 bio__name"><a href="https://spacenavigators.com/authors/yajur-kumar/" rel="author">Yajur Kumar</a></h3><div class="bio__desc"><p><a href="https://spacenavigators.com/about-me/">About Me</a></p></div></div></div></div><nav class="content__nav"><div class="wrapper"><div class="content__nav-inner"><div class="content__nav-prev"><a href="https://spacenavigators.com/polynomial-guidance-in-spacecraft-navigation-an-in-depth-perspective-introduction/" class="content__nav-link" rel="prev"><figure class="content__nav-image"><img src="https://spacenavigators.com/media/posts/13/responsive/lunar_lander_poly-xs.jpeg" class="lazyload" loading="lazy" alt="Polynomial Guidance" height="1248" width="1248"></figure><div><span>Previous</span> Polynomial Guidance in Spacecraft: A Simplified Perspective</div></a></div><div class="content__nav-next"><a href="https://spacenavigators.com/the-three-body-problem/" class="content__nav-link" rel="next"><div><span>Next</span> The Three-Body Problem</div></a></div></div></div></nav></footer></article><div class="content__related related"><div class="wrapper"><h2 class="h4 related__title">You should also read:</h2><article class="feed__item feed__item--centered"><figure class="feed__image related__image"><img src="https://spacenavigators.com/media/posts/16/HInResults.png" srcset="https://spacenavigators.com/media/posts/16/responsive/HInResults-xs.png 640w, https://spacenavigators.com/media/posts/16/responsive/HInResults-sm.png 768w, https://spacenavigators.com/media/posts/16/responsive/HInResults-md.png 1024w" sizes="(min-width: 600px) calc(4.38vw + 143px), 87.86vw" loading="lazy" height="899" width="1920" alt=""></figure><div class="feed__content"><header><div class="feed__meta"><a href="https://spacenavigators.com/authors/yajur-kumar/" class="feed__author">Yajur Kumar</a> <time datetime="2025-11-30T12:31" class="feed__date">November 30, 2025</time></div><h3 class="feed__title"><a href="https://spacenavigators.com/a-simple-guide-to-design-robust-attitude-and-orbit-controller-for-satellites/">A Simple Guide to Design Robust Attitude and Orbit Controller for Satellites</a></h3></header><p>My usual approach to learn a new system involves learning about its history and how it came into existence. Today we are exploring the robust controllers used in the satellites. Early satellites from the 1950s and 60s, such as Explorer 1 and Vanguard, relied on&hellip;</p><a href="https://spacenavigators.com/a-simple-guide-to-design-robust-attitude-and-orbit-controller-for-satellites/" class="readmore feed__readmore">Continue reading...</a></div></article></div></div></main><footer class="footer footer--glued"><div class="wrapper"><div class="footer__copyright"><p>(C) Space Navigators, 2025. All rights reserved.</p></div><div class="footer__social"><a href="https://www.linkedin.com/company/93378143" aria-label="LinkedIn"><svg><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#linkedin"/></svg></a></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://spacenavigators.com/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://spacenavigators.com/assets/js/scripts.min.js?v=700105c316933a8202041b6415abb233"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script></body></html>
