@@ -1,0 +1,476 @@
+<! -- Developed by Yajur Kumar, Space Navigators, (C) 2025.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Navigators | CubeSat AOCS Budget Tool (Beta)</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 850: '#1e293b' } // Custom dark shade
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        .input-label { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: 4px; letter-spacing: 0.5px; }
+        .input-field { 
+            width: 100%; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; 
+            padding: 8px 12px; font-size: 0.9rem; color: #0f172a; transition: all 0.2s;
+        }
+        .input-field:focus { outline: none; border-color: #3b82f6; background: white; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        .tab-btn { padding: 12px 24px; font-weight: 600; font-size: 0.9rem; color: #64748b; border-bottom: 2px solid transparent; transition: all 0.2s; }
+        .tab-btn:hover { color: #0ea5e9; background: #f0f9ff; }
+        .tab-btn.active { color: #0ea5e9; border-bottom-color: #0ea5e9; background: #f0f9ff; }
+        .preset-btn { 
+            font-size: 0.75rem; padding: 6px 0; border: 1px solid #cbd5e1; border-radius: 4px; 
+            background: white; color: #475569; font-weight: 600; transition: all 0.1s;
+        }
+        .preset-btn:hover { background: #f1f5f9; }
+        .preset-btn.active { background: #eff6ff; border-color: #3b82f6; color: #1d4ed8; font-weight: 800; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen p-4 md:p-8">
+
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-200">
+        
+        <!-- Header -->
+        <header class="bg-slate-900 text-white p-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="bg-blue-500/20 p-3 rounded-lg text-blue-400">
+                    <i class="fa-solid fa-satellite fa-2x"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">Space Navigators</h1>
+                    <p class="text-slate-400 text-xs md:text-sm">Cubesat AOCS Budget Tool (Beta)</p>
+                </div>
+            </div>
+            <button onclick="window.print()" class="hidden md:block bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded text-sm font-medium transition border border-slate-700">
+                <i class="fa-solid fa-print mr-2"></i> Print Report
+            </button>
+        </header>
+
+        <!-- Config Section -->
+        <div class="bg-slate-50 border-b border-slate-200 p-6 md:p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left: Geometry -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-cube text-blue-500"></i> Spacecraft Geometry
+                        </h3>
+                        <!-- Presets -->
+                        <div class="grid grid-cols-4 gap-2 w-48">
+                            <button id="p-1u" class="preset-btn">1U</button>
+                            <button id="p-3u" class="preset-btn active">3U</button>
+                            <button id="p-6u" class="preset-btn">6U</button>
+                            <button id="p-edit" class="preset-btn text-slate-400 border-dashed">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="input-label">Total Mass (kg)</label>
+                            <input type="number" id="i-mass" value="4.0" step="0.1" class="input-field">
+                        </div>
+                        <div>
+                            <label class="input-label">Dim X (m)</label>
+                            <input type="number" id="i-x" value="0.10" step="0.01" class="input-field">
+                        </div>
+                        <div>
+                            <label class="input-label">Dim Y (m)</label>
+                            <input type="number" id="i-y" value="0.10" step="0.01" class="input-field">
+                        </div>
+                        <div>
+                            <label class="input-label">Dim Z (m)</label>
+                            <input type="number" id="i-z" value="0.34" step="0.01" class="input-field">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Environment -->
+                <div class="lg:col-span-5 space-y-6 border-l border-slate-200 pl-0 lg:pl-8">
+                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-blue-500"></i> Orbit Environment
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <label class="input-label">Altitude</label>
+                                <span id="disp-alt" class="text-sm font-mono font-bold text-blue-600">500 km</span>
+                            </div>
+                            <input type="range" id="i-alt" min="200" max="1000" value="500" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="input-label">Solar Activity</label>
+                                <select id="i-solar" class="input-field">
+                                    <option value="70">Low (Quiet)</option>
+                                    <option value="150" selected>Moderate</option>
+                                    <option value="250">High (Storm)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="input-label">Res. Dipole (Am²)</label>
+                                <input type="number" id="i-dip" value="0.01" step="0.005" class="input-field">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Action -->
+            <div class="mt-8 pt-6 border-t border-slate-200 flex justify-end">
+                <button id="btn-run" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg shadow-blue-500/30 transition-all transform active:scale-95 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> Run Simulation
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex border-b border-slate-200 bg-white sticky top-0 z-10 px-4 md:px-8">
+            <button id="t-dash" class="tab-btn active"><i class="fa-solid fa-chart-pie mr-2"></i>Dashboard</button>
+            <button id="t-plot" class="tab-btn"><i class="fa-solid fa-chart-line mr-2"></i>Trade Studies</button>
+            <button id="t-sim" class="tab-btn"><i class="fa-solid fa-clock-rotate-left mr-2"></i>Simulation</button>
+        </div>
+
+        <!-- Content Area -->
+        <div class="p-6 md:p-8 bg-white min-h-[500px]">
+            
+            <!-- VIEW: DASHBOARD -->
+            <div id="v-dash" class="animate-fade-in">
+                
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Dominant Force</div>
+                        <div id="k-dom" class="text-xl md:text-2xl font-black text-slate-800">-</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Momentum / Orbit</div>
+                        <div id="k-mom" class="text-xl md:text-2xl font-black text-orange-600">-</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Required Torque</div>
+                        <div id="k-req" class="text-xl md:text-2xl font-black text-blue-600">-</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Dumping Dipole</div>
+                        <div id="k-dip" class="text-xl md:text-2xl font-black text-green-600">-</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Main Chart -->
+                    <div class="lg:col-span-2 border border-slate-100 rounded-xl p-4 shadow-sm">
+                        <div class="h-[350px]">
+                            <canvas id="c-main"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border border-blue-100 p-5 rounded-xl">
+                            <h4 class="text-blue-800 font-bold text-xs uppercase mb-2"><i class="fa-solid fa-gear mr-1"></i> Reaction Wheels</h4>
+                            <p id="r-rw" class="text-sm font-semibold text-slate-800 leading-relaxed">System awaiting calculation...</p>
+                        </div>
+
+                        <div class="bg-green-50 border border-green-100 p-5 rounded-xl">
+                            <h4 class="text-green-800 font-bold text-xs uppercase mb-2"><i class="fa-solid fa-magnet mr-1"></i> Magnetorquers</h4>
+                            <p id="r-mtq" class="text-sm font-semibold text-slate-800 leading-relaxed">System awaiting calculation...</p>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl">
+                            <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">Inertia Matrix (kg·m²)</h4>
+                            <div class="font-mono text-xs text-slate-600 space-y-1">
+                                <div class="flex justify-between border-b border-slate-200 pb-1"><span>Ixx:</span><span id="v-ixx" class="font-bold">0</span></div>
+                                <div class="flex justify-between border-b border-slate-200 pb-1"><span>Iyy:</span><span id="v-iyy" class="font-bold">0</span></div>
+                                <div class="flex justify-between"><span>Izz:</span><span id="v-izz" class="font-bold">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: TRADE STUDY -->
+            <div id="v-plot" class="hidden">
+                <div class="bg-white border border-slate-200 rounded-xl p-6 h-[500px]">
+                    <h3 class="font-bold text-slate-700 mb-4">Altitude Trade Study (200km - 900km)</h3>
+                    <div class="h-[400px]">
+                        <canvas id="c-trade"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-4 text-center">Lower altitudes require significantly larger actuators due to exponential drag increase.</p>
+                </div>
+            </div>
+
+            <!-- VIEW: SIMULATION -->
+            <div id="v-sim" class="hidden">
+                <div class="bg-white border border-slate-200 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-slate-700 mb-4">Momentum Saturation Simulation (5 Orbits)</h3>
+                    <div class="h-[350px]">
+                        <canvas id="c-sim"></canvas>
+                    </div>
+                </div>
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl flex items-center justify-between">
+                    <div>
+                        <h4 class="text-red-800 font-bold text-sm uppercase">Saturation Risk</h4>
+                        <p class="text-red-600 text-xs mt-1">Time until a standard 30mNms wheel saturates without dumping.</p>
+                    </div>
+                    <div class="text-right">
+                        <span id="sim-time" class="block text-2xl font-black text-red-900">...</span>
+                        <span class="text-xs text-red-700 font-bold">ORBITS</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Javascript Logic -->
+    <script>
+    (function() {
+        // --- 1. Physics Engine ---
+        const C = { Re: 6371000, mu: 3.986e14, B0: 3.12e-5, solarP: 4.56e-6 };
+
+        function getAtmosphere(alt_km, f107) {
+            let rho0, h0, H;
+            // Solar scaling approximation
+            const solarFactor = 1 + ((f107 - 150) / 150) * 2.5;
+
+            // Simplified Scale Height Model
+            if (alt_km > 700) { rho0 = 3.61e-14; h0 = 700; H = 88; }
+            else if (alt_km > 600) { rho0 = 1.45e-13; h0 = 600; H = 71; }
+            else if (alt_km > 500) { rho0 = 6.96e-13; h0 = 500; H = 63; }
+            else if (alt_km > 400) { rho0 = 3.72e-12; h0 = 400; H = 58; }
+            else if (alt_km > 300) { rho0 = 2.41e-11; h0 = 300; H = 53; }
+            else { rho0 = 2.27e-10; h0 = 200; H = 40; } // <300km
+
+            const rho = rho0 * Math.exp(-(alt_km - h0)/H);
+            return rho * Math.max(0.1, solarFactor);
+        }
+
+        class AOCSCalculator {
+            calculate(inputs) {
+                const R = C.Re + (inputs.alt * 1000);
+                const V = Math.sqrt(C.mu / R);
+                const Period = 2 * Math.PI * Math.sqrt(Math.pow(R,3)/C.mu);
+                const density = getAtmosphere(inputs.alt, inputs.solar);
+
+                const {mass:m, x, y, z} = inputs;
+                
+                // Inertia Tensor
+                const Ixx = (m/12) * (y*y + z*z);
+                const Iyy = (m/12) * (x*x + z*z);
+                const Izz = (m/12) * (x*x + y*y);
+                const I_max = Math.max(Ixx, Iyy, Izz);
+                const I_min = Math.min(Ixx, Iyy, Izz);
+
+                // Disturbance Torques (15 deg worst case deviation hardcoded for simplicity)
+                const thetaRad = 15 * (Math.PI/180);
+
+                // Gravity Gradient
+                const Tg = (3 * C.mu / (2 * Math.pow(R, 3))) * (I_max - I_min) * Math.sin(2 * thetaRad);
+
+                // Aerodynamic
+                const AreaDrag = (y * z) * Math.cos(thetaRad) + (x * y) * Math.sin(thetaRad);
+                const offset = 0.03; // 3cm offset
+                const Ta = 0.5 * density * V * V * 2.2 * AreaDrag * offset;
+
+                // Magnetic
+                const B_local = 2 * C.B0 * Math.pow(C.Re / R, 3);
+                const Tm = inputs.dipole * B_local;
+
+                // Solar
+                const Tsp = C.solarP * AreaDrag * offset;
+
+                // Sizing
+                const maxDisturbance = Math.max(Tg, Ta, Tm, Tsp);
+                const alpha = (2 * (Math.PI/2)) / (3600); // 60s slew squared
+                const Tslew = I_max * alpha;
+                const T_req = (maxDisturbance + Tslew) * 1.5;
+                const h_orbit = Ta * Period;
+                const required_dipole = (Ta * 2.0) / B_local;
+
+                return { Tg, Ta, Tm, Tsp, Ixx, Iyy, Izz, T_req, h_orbit, Period, required_dipole, B_local };
+            }
+        }
+
+        // --- 2. Controller ---
+        const calc = new AOCSCalculator();
+        let chartMain, chartTrade, chartSim;
+        const $ = (id) => document.getElementById(id);
+
+        function getInputs() {
+            return {
+                mass: parseFloat($('i-mass').value),
+                x: parseFloat($('i-x').value),
+                y: parseFloat($('i-y').value),
+                z: parseFloat($('i-z').value),
+                dipole: parseFloat($('i-dip').value),
+                alt: parseFloat($('i-alt').value),
+                solar: parseFloat($('i-solar').value)
+            };
+        }
+
+        function runAnalysis() {
+            const inputs = getInputs();
+            const res = calc.calculate(inputs);
+
+            // Text Updates
+            const map = {'Gravity': res.Tg, 'Drag': res.Ta, 'Magnetic': res.Tm, 'Solar': res.Tsp};
+            const domKey = Object.keys(map).reduce((a, b) => map[a] > map[b] ? a : b);
+            
+            $('k-dom').innerText = domKey;
+            $('k-mom').innerText = (res.h_orbit*1000).toFixed(2) + " mNms";
+            $('k-req').innerText = (res.T_req*1000).toFixed(2) + " mNm";
+            $('k-dip').innerText = res.required_dipole.toFixed(2) + " Am²";
+            
+            $('v-ixx').innerText = res.Ixx.toFixed(4);
+            $('v-iyy').innerText = res.Iyy.toFixed(4);
+            $('v-izz').innerText = res.Izz.toFixed(4);
+
+            // Recommendations
+            const mom = res.h_orbit * 1000;
+            let rwText = "";
+            if(mom < 5) rwText = "Micro-Wheels (<10 mNms) or Magnetorquers only.";
+            else if(mom < 30) rwText = "Standard CubeSat Wheels (10-30 mNms). e.g., RW-0.03";
+            else if(mom < 100) rwText = "High Capacity Wheels (30-100 mNms). e.g., CubeSpace Med";
+            else rwText = "CRITICAL: Very Large Wheels (>100 mNms) or Drag Sails required.";
+            $('r-rw').innerText = rwText;
+
+            let mtqText = "";
+            if(res.required_dipole < 0.1) mtqText = "Standard PCB or small coil Torquers.";
+            else if(res.required_dipole < 0.5) mtqText = "Cored Torque Rods (Standard).";
+            else mtqText = "High-Power Torque Rods required.";
+            $('r-mtq').innerText = mtqText;
+
+            // Update Charts
+            updateCharts(res, inputs);
+        }
+
+        function updateCharts(res, inputs) {
+            // 1. Main
+            if(chartMain) {
+                chartMain.data.datasets[0].data = [res.Tg, res.Ta, res.Tm, res.Tsp];
+                chartMain.update();
+            }
+
+            // 2. Trade
+            const alts = [], dData = [], gData = [];
+            for(let a=200; a<=900; a+=50) {
+                let tr = calc.calculate({...inputs, alt: a});
+                alts.push(a); dData.push(tr.Ta); gData.push(tr.Tg);
+            }
+            if(chartTrade) {
+                chartTrade.data.labels = alts;
+                chartTrade.data.datasets[0].data = dData;
+                chartTrade.data.datasets[1].data = gData;
+                chartTrade.update();
+            }
+
+            // 3. Sim
+            const points = [], labels = [];
+            let currentH = 0;
+            const h_per_step = res.Ta * (res.Period / 20) * 1000;
+            for(let i=0; i <= 60; i++) {
+                currentH += h_per_step;
+                labels.push(i%20===0 ? i/20 : '');
+                points.push(currentH);
+            }
+            if(chartSim) {
+                chartSim.data.labels = labels;
+                chartSim.data.datasets[0].data = points;
+                chartSim.update();
+            }
+            
+            const orbitsToSat = 30 / (res.h_orbit * 1000);
+            $('sim-time').innerText = orbitsToSat.toFixed(1);
+        }
+
+        // --- Presets & Listeners ---
+        const presets = {
+            'p-1u': { m: 1.3, x: 0.1, y: 0.1, z: 0.1 },
+            'p-3u': { m: 4.0, x: 0.1, y: 0.1, z: 0.34 },
+            'p-6u': { m: 8.0, x: 0.1, y: 0.22, z: 0.34 }
+        };
+
+        Object.keys(presets).forEach(id => {
+            $(id).addEventListener('click', () => {
+                const p = presets[id];
+                $('i-mass').value = p.m; $('i-x').value = p.x; $('i-y').value = p.y; $('i-z').value = p.z;
+                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                $(id).classList.add('active');
+            });
+        });
+
+        $('p-edit').addEventListener('click', function() {
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        });
+
+        $('i-alt').addEventListener('input', (e) => {
+            $('disp-alt').innerText = e.target.value + " km";
+        });
+
+        $('btn-run').addEventListener('click', runAnalysis);
+
+        // Tab Switching
+        const views = { 't-dash': 'v-dash', 't-plot': 'v-plot', 't-sim': 'v-sim' };
+        Object.keys(views).forEach(tabId => {
+            $(tabId).addEventListener('click', () => {
+                // Hide all
+                Object.values(views).forEach(vid => $(vid).classList.add('hidden'));
+                Object.keys(views).forEach(tid => $(tid).classList.remove('active'));
+                // Show current
+                $(views[tabId]).classList.remove('hidden');
+                $(tabId).classList.add('active');
+            });
+        });
+
+        // Initialize Charts & Run
+        window.addEventListener('load', () => {
+            const commonOpts = { responsive: true, maintainAspectRatio: false };
+            
+            chartMain = new Chart($('c-main'), {
+                type: 'bar',
+                data: { labels: ['Gravity', 'Drag', 'Magnetic', 'Solar'], datasets: [{ label: 'Torque (Nm)', data: [0,0,0,0], backgroundColor: ['#3b82f6', '#ef4444', '#10b981', '#eab308'] }] },
+                options: { ...commonOpts, scales: { y: { type: 'logarithmic' } }, plugins: { legend: {display:false} } }
+            });
+
+            chartTrade = new Chart($('c-trade'), {
+                type: 'line',
+                data: { labels: [], datasets: [{ label: 'Drag Torque', borderColor: '#ef4444', data: [] }, { label: 'Gravity Torque', borderColor: '#3b82f6', data: [] }] },
+                options: { ...commonOpts, scales: { y: { type: 'logarithmic' } } }
+            });
+
+            chartSim = new Chart($('c-sim'), {
+                type: 'line',
+                data: { labels: [], datasets: [{ label: 'Momentum (mNms)', borderColor: '#ea580c', fill: true, backgroundColor: '#ffedd5', data: [] }] },
+                options: { ...commonOpts, elements:{point:{radius:0}} }
+            });
+
+            runAnalysis();
+        });
+
+    })();
+    </script>
+</body>
+</html>
