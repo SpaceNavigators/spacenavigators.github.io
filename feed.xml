@@ -3,7 +3,7 @@
     <title>Space Navigators</title>
     <link href="https://spacenavigators.com/feed.xml" rel="self" />
     <link href="https://spacenavigators.com" />
-    <updated>2025-12-12T17:38:40+05:30</updated>
+    <updated>2025-12-12T23:05:13+05:30</updated>
     <author>
         <name>Yajur Kumar</name>
     </author>
@@ -258,7 +258,8 @@
 <li><strong>Simulation &amp; Analysis:</strong> Full Monte Carlo analysis of your disturbance environment to prove to stakeholders that your satellite will not tumble.</li>
 <li><strong>Hardware-in-the-Loop Planning:</strong> I can design the test campaign to verify your ADCS hardware before it gets integrated.</li>
 </ul>
-<p>Contact me to discuss how we can ensure your satellite points exactly where it needs to, every time.</p>
+<p>Contact me to discuss how we can ensure your satellite points exactly where it needs to, every time. </p>
+<p>PS: You can play with the beta version of the simplified AOCS budgeting software tool I developed here.</p>
 </div>
 </article>
             ]]>
