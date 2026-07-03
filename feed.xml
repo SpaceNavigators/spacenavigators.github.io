@@ -3,7 +3,7 @@
     <title>Space Navigators</title>
     <link href="https://spacenavigators.com/feed.xml" rel="self" />
     <link href="https://spacenavigators.com" />
-    <updated>2025-12-12T23:07:50+05:30</updated>
+    <updated>2025-12-12T18:37:50+01:00</updated>
     <author>
         <name>Yajur Kumar</name>
     </author>
@@ -25,7 +25,7 @@
             <category term="Actuator Selection"/>
             <category term="AOCS"/>
 
-        <updated>2025-12-12T17:09:37+05:30</updated>
+        <updated>2025-12-12T12:39:37+01:00</updated>
             <summary type="html">
                 <![CDATA[
                         <img src="https://spacenavigators.com/media/posts/18/image.jpg" alt="CubeSat" />
@@ -278,7 +278,7 @@
             <category term="GNC"/>
             <category term="AOCS"/>
 
-        <updated>2025-11-30T17:01:24+05:30</updated>
+        <updated>2025-11-30T12:31:24+01:00</updated>
             <summary type="html">
                 <![CDATA[
                         <img src="https://spacenavigators.com/media/posts/16/HInResults.png" alt="" />
@@ -653,7 +653,7 @@ Performance Metrics:
         <link href="https://spacenavigators.com/the-three-body-problem/"/>
         <id>https://spacenavigators.com/the-three-body-problem/</id>
 
-        <updated>2025-09-12T21:29:40+05:30</updated>
+        <updated>2025-09-12T17:59:40+02:00</updated>
             <summary type="html">
                 <![CDATA[
                     In physics and astrodynamics, this isn’t just some abstract puzzle—it’s an interesting concept for satellite engineers trying to keep their billion-dollar toys from wandering off into the void. If you’re into Guidance, Navigation, and Control (GNC) for satellites, buckle up: we’re diving deep into how&hellip;
@@ -683,7 +683,7 @@ Performance Metrics:
         <link href="https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/"/>
         <id>https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/</id>
 
-        <updated>2025-09-07T21:45:16+05:30</updated>
+        <updated>2025-09-07T18:15:16+02:00</updated>
             <summary type="html">
                 <![CDATA[
                     The inspiration for Genetic Algorithms (GAs) comes directly from nature, specifically from the process of evolution and natural selection. In this article, we discuss how this natural process works in detail and how it inspired the creation of an algorithm for problem-solving and optimization. In&hellip;
@@ -1007,7 +1007,7 @@ end
             <category term="GNC"/>
             <category term="Docking"/>
 
-        <updated>2025-09-07T13:39:31+05:30</updated>
+        <updated>2025-09-07T10:09:31+02:00</updated>
             <summary type="html">
                 <![CDATA[
                         <img src="https://spacenavigators.com/media/posts/13/lunar_lander_poly.jpeg" alt="Polynomial Guidance" />
@@ -1408,7 +1408,7 @@ $$</p><p>Where $n = \sqrt{\mu / r^3}$ is mean motion, $\mu$ is the gravitational
             <category term="Orbital Mechanics"/>
             <category term="GNC"/>
 
-        <updated>2025-08-02T19:18:36+05:30</updated>
+        <updated>2025-08-02T15:48:36+02:00</updated>
             <summary type="html">
                 <![CDATA[
                     In satellite Guidance, Navigation, and Control (GNC) systems, force models are mathematical representations of various forces acting on a satellite. These models are critical for realistic GNC simulations and precise orbit determination. This article explores the key force models, including gravitational, atmospheric drag, solar radiation&hellip;
