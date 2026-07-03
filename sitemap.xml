@@ -26,7 +26,7 @@
 </url>
 <url>
 <loc>https://spacenavigators.com/about-me/</loc>
-<lastmod>2025-09-07T14:11:07+02:00</lastmod>
+<lastmod>2026-07-03T15:16:35+02:00</lastmod>
 <image:image>
 <image:loc>https://spacenavigators.com/media/posts/3/IMG_20250907_140858.jpg</image:loc>
 <image:title><![CDATA[Space Navigators]]></image:title>
@@ -48,6 +48,42 @@
 </url>
 <url>
 <loc>https://spacenavigators.com/authors/yajur-kumar/page/2/</loc>
+</url>
+<url>
+<loc>https://spacenavigators.com/beyond-gnss-deep-space-navigation/</loc>
+<lastmod>2026-07-03T18:28:29+02:00</lastmod>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/DeepspaceNav.png</image:loc>
+<image:title><![CDATA[Beyond GNSS: Deep‑Space Navigation]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_01.png</image:loc>
+<image:title><![CDATA[Navigation methods across deep-space mission regimes.]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_08.png</image:loc>
+<image:title><![CDATA[GPS L1 C/A received isotropic power as a function of distance from Earth.]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_03.png</image:loc>
+<image:title><![CDATA[Comparison of GPS L1 C/A received power]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_07.png</image:loc>
+<image:title><![CDATA[Coherent integration gain for GPS L1 C/A signals]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_02-2.png</image:loc>
+<image:title><![CDATA[Image description]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_05.png</image:loc>
+<image:title><![CDATA[Figure 6 shows how achievable angular resolution improves with increasing interferometric baseline and timing precision.]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://spacenavigators.com/media/posts/20/fig_04-2.png</image:loc>
+<image:title><![CDATA[Figure 7. Expected XNAV performance for PSR B1937+21.]]></image:title>
+</image:image>
 </url>
 <url>
 <loc>https://spacenavigators.com/genetic-algorithms-for-optimal-system-design/</loc>
